@@ -23,12 +23,13 @@ def opml_to_html(opml_file, html_file):
         # Write the list and traverse sorted children of the outline element
         html.write('<ul>\n')
         for outline in sorted_children:
-            title = outline.get('text')
-            url = outline.get('xmlUrl')
+            title = outline.get('title')
+            text = outline.get('text')
+            url = outline.get('htmlUrl')
 
             # Write HTML list item with link
             if title and url:
-                html.write(f'<li><a href="{url}">{title}</a></li>\n')
+                html.write(f'<li><a href="{url}" title="{title}">{text}</a></li>\n')
 
         # Write closing tags for HTML
         html.write('</ul>\n</body>\n</html>\n')
